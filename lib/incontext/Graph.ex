@@ -50,7 +50,7 @@ defmodule InContext.Graph do
       iex> InContext.Graph.out_edges(graph, 1)
       #MapSet<[%InContext.Graph.Edge{from: 1, to: 2, weight: 1.0}]>
   """
-  @spec add_edge(Graph.t(), non_neg_integer, non_neg_integer, number) :: Graph.t()
+  @spec add_edge(Graph.t(), node, node, number) :: Graph.t()
   def add_edge(graph, from, to, weight \\ 1.0) do
     edge = Edge.new(from, to, weight)
     %{graph |
