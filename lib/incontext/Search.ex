@@ -2,6 +2,10 @@ defmodule InContext.Search do
   alias InContext.Graph
   alias InContext.Context
 
+  @moduledoc """
+  Searching Algorithms using Graph Contexts
+  """
+
   @doc """
   Depth-first search of a graph.
 
@@ -28,15 +32,15 @@ defmodule InContext.Search do
 
   ## Examples
 
-  iex> graph = InContext.Graph.tree_graph(4)
-  iex> InContext.Search.bfs(graph, 0, 3)
-  [0, 1, 2, 3]
-  iex> InContext.Search.bfs(graph, 0, 2)
-  [0, 1, 2]
-  iex> InContext.Search.bfs(graph, 1, 2)
-  []
-  iex> InContext.Search.bfs(graph, 0, 100)
-  []
+      iex> graph = InContext.Graph.tree_graph(4)
+      iex> InContext.Search.bfs(graph, 0, 3)
+      [0, 1, 2, 3]
+      iex> InContext.Search.bfs(graph, 0, 2)
+      [0, 1, 2]
+      iex> InContext.Search.bfs(graph, 1, 2)
+      []
+      iex> InContext.Search.bfs(graph, 0, 100)
+      []
   """
   @spec bfs(Graph.t(), node, node) :: list(node)
   def bfs(graph, from, to) do

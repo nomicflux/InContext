@@ -67,6 +67,9 @@ InContext.Search
       </h1>
 
 
+        <section id="moduledoc">
+<p>Searching Algorithms using Graph Contexts</p>
+        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -112,7 +115,7 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">bfs(graph, from, to)</span>
-      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Search.ex#L42" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Search.ex#L46" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -128,15 +131,15 @@ Functions          </h1>
   Examples
 </h2>
 
-<p>iex&gt; graph = InContext.Graph.tree_graph(4)
-iex&gt; InContext.Search.bfs(graph, 0, 3)
-[0, 1, 2, 3]
-iex&gt; InContext.Search.bfs(graph, 0, 2)
-[0, 1, 2]
-iex&gt; InContext.Search.bfs(graph, 1, 2)
-[]
-iex&gt; InContext.Search.bfs(graph, 0, 100)
-[]</p>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">InContext.Graph</span><span class="o">.</span><span class="n">tree_graph</span><span class="p" data-group-id="3296843819-1">(</span><span class="mi">4</span><span class="p" data-group-id="3296843819-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">InContext.Search</span><span class="o">.</span><span class="n">bfs</span><span class="p" data-group-id="3296843819-2">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="3296843819-2">)</span><span class="w">
+</span><span class="p" data-group-id="3296843819-3">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="3296843819-3">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">InContext.Search</span><span class="o">.</span><span class="n">bfs</span><span class="p" data-group-id="3296843819-4">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="3296843819-4">)</span><span class="w">
+</span><span class="p" data-group-id="3296843819-5">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="3296843819-5">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">InContext.Search</span><span class="o">.</span><span class="n">bfs</span><span class="p" data-group-id="3296843819-6">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="3296843819-6">)</span><span class="w">
+</span><span class="p" data-group-id="3296843819-7">[</span><span class="p" data-group-id="3296843819-7">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">InContext.Search</span><span class="o">.</span><span class="n">bfs</span><span class="p" data-group-id="3296843819-8">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p" data-group-id="3296843819-8">)</span><span class="w">
+</span><span class="p" data-group-id="3296843819-9">[</span><span class="p" data-group-id="3296843819-9">]</span></code></pre>
   </section>
 </section>
 <section class="detail" id="dfs/3">
@@ -146,7 +149,7 @@ iex&gt; InContext.Search.bfs(graph, 0, 100)
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">dfs(graph, from, to)</span>
-      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Search.ex#L21" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Search.ex#L25" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -162,15 +165,15 @@ iex&gt; InContext.Search.bfs(graph, 0, 100)
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">InContext.Graph</span><span class="o">.</span><span class="n">tree_graph</span><span class="p" data-group-id="0422796996-1">(</span><span class="mi">4</span><span class="p" data-group-id="0422796996-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">InContext.Search</span><span class="o">.</span><span class="n">dfs</span><span class="p" data-group-id="0422796996-2">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="0422796996-2">)</span><span class="w">
-</span><span class="p" data-group-id="0422796996-3">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="0422796996-3">]</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">InContext.Search</span><span class="o">.</span><span class="n">dfs</span><span class="p" data-group-id="0422796996-4">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="0422796996-4">)</span><span class="w">
-</span><span class="p" data-group-id="0422796996-5">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="0422796996-5">]</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">InContext.Search</span><span class="o">.</span><span class="n">dfs</span><span class="p" data-group-id="0422796996-6">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="0422796996-6">)</span><span class="w">
-</span><span class="p" data-group-id="0422796996-7">[</span><span class="p" data-group-id="0422796996-7">]</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">InContext.Search</span><span class="o">.</span><span class="n">dfs</span><span class="p" data-group-id="0422796996-8">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p" data-group-id="0422796996-8">)</span><span class="w">
-</span><span class="p" data-group-id="0422796996-9">[</span><span class="p" data-group-id="0422796996-9">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">InContext.Graph</span><span class="o">.</span><span class="n">tree_graph</span><span class="p" data-group-id="5273025293-1">(</span><span class="mi">4</span><span class="p" data-group-id="5273025293-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">InContext.Search</span><span class="o">.</span><span class="n">dfs</span><span class="p" data-group-id="5273025293-2">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="5273025293-2">)</span><span class="w">
+</span><span class="p" data-group-id="5273025293-3">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="5273025293-3">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">InContext.Search</span><span class="o">.</span><span class="n">dfs</span><span class="p" data-group-id="5273025293-4">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="5273025293-4">)</span><span class="w">
+</span><span class="p" data-group-id="5273025293-5">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="5273025293-5">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">InContext.Search</span><span class="o">.</span><span class="n">dfs</span><span class="p" data-group-id="5273025293-6">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="5273025293-6">)</span><span class="w">
+</span><span class="p" data-group-id="5273025293-7">[</span><span class="p" data-group-id="5273025293-7">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">InContext.Search</span><span class="o">.</span><span class="n">dfs</span><span class="p" data-group-id="5273025293-8">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p" data-group-id="5273025293-8">)</span><span class="w">
+</span><span class="p" data-group-id="5273025293-9">[</span><span class="p" data-group-id="5273025293-9">]</span></code></pre>
   </section>
 </section>
           </div>

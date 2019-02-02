@@ -45,6 +45,10 @@ defmodule InContext.Context do
     end
   end
 
+  @doc """
+  Returns implementation-indpendent view of edges in a context.
+  """
+  @spec edge_list(Context.t()) :: { [{node, node, number}], [{node, node, number}]}
   def edge_list(ctx) do
     { ctx.in_edges |> MapSet.to_list |> Enum.map(&Edge.as_triple/1),
       ctx.out_edges |> MapSet.to_list |> Enum.map(&Edge.as_triple/1) }
