@@ -7,7 +7,7 @@ defmodule InContext.Search do
   """
 
   @doc """
-  Depth-first search of a graph.
+  Depth-first search of a graph, returning nodes visited.
 
   ## Examples
 
@@ -28,7 +28,7 @@ defmodule InContext.Search do
   end
 
   @doc """
-  Breadth-first search of a graph.
+  Breadth-first search of a graph, returning nodes visited.
 
   ## Examples
 
