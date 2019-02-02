@@ -1,4 +1,4 @@
-defmodule Graph.Edge do
+defmodule InContext.Graph.Edge do
   alias __MODULE__
 
   @enforce_keys [:from, :to]
