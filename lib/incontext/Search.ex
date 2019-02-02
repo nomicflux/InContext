@@ -2,12 +2,42 @@ defmodule InContext.Search do
   alias InContext.Graph
   alias InContext.Context
 
+  @doc """
+  Depth-first search of a graph.
+
+  ## Examples
+
+      iex> graph = InContext.Graph.tree_graph(4)
+      iex> InContext.Search.dfs(graph, 0, 3)
+      [0, 1, 3]
+      iex> InContext.Search.dfs(graph, 0, 2)
+      [0, 1, 3, 7, 8, 4, 9, 10, 2]
+      iex> InContext.Search.dfs(graph, 1, 2)
+      []
+      iex> InContext.Search.dfs(graph, 0, 100)
+      []
+  """
   @spec dfs(Graph.t(), node, node) :: list(node)
   def dfs(graph, from, to) do
     c = Context.view(graph, from)
     search_ctx(c, [], to, &dfs_combiner/2, [])
   end
 
+  @doc """
+  Breadth-first search of a graph.
+
+  ## Examples
+
+  iex> graph = InContext.Graph.tree_graph(4)
+  iex> InContext.Search.bfs(graph, 0, 3)
+  [0, 1, 2, 3]
+  iex> InContext.Search.bfs(graph, 0, 2)
+  [0, 1, 2]
+  iex> InContext.Search.bfs(graph, 1, 2)
+  []
+  iex> InContext.Search.bfs(graph, 0, 100)
+  []
+  """
   @spec bfs(Graph.t(), node, node) :: list(node)
   def bfs(graph, from, to) do
     c = Context.view(graph, from)
