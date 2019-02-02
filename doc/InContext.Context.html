@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.3">
+    <title>InContext.Context — InContext v0.1.0</title>
+    <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
+    <script src="dist/sidebar_items-a505d49196.js"></script>
+    <script async src="dist/html-399e30b9b028e3059575.js"></script>
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  <a href="http://nomicflux.github.io/InContext" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+InContext      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.0
+      </h2>
+    </div>
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">InContext v0.1.0</small>
+InContext.Context        
+          <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Context.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+      </h1>
+
+
+        <section id="moduledoc">
+<p>Contextual Views on Graphs</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#edge_list/1">edge_list(ctx)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#view/2">view(graph, node)</a>
+  </div>
+    <div class="summary-synopsis"><p>Creates a view from a graph at a given node, and returns the rest of the graph</p>
+</div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="edge_list/1">
+    <div class="detail-header">
+    <a href="#edge_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">edge_list(ctx)</span>
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Context.ex#L48" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="view/2">
+    <div class="detail-header">
+    <a href="#view/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">view(graph, node)</span>
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Context.ex#L33" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>view(<a href="InContext.Graph.html#t:t/0">InContext.Graph.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>() | nil) ::
+  {<a href="InContext.Context.html#t:t/0">InContext.Context.t</a>(), <a href="InContext.Graph.html#t:t/0">InContext.Graph.t</a>()} | nil</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Creates a view from a graph at a given node, and returns the rest of the graph</p>
+<h2 id="view/2-examples" class="section-heading">
+  <a href="#view/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">InContext.Graph</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="o">|&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="nc">InContext.Graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p" data-group-id="3688276938-1">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="3688276938-1">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="nc">InContext.Graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p" data-group-id="3688276938-2">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="3688276938-2">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="nc">InContext.Graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p" data-group-id="3688276938-3">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="3688276938-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="3688276938-4">{</span><span class="n">ctx</span><span class="p">,</span><span class="w"> </span><span class="n">graph2</span><span class="p" data-group-id="3688276938-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">InContext.Context</span><span class="o">.</span><span class="n">view</span><span class="p" data-group-id="3688276938-5">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="3688276938-5">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">ctx</span><span class="o">.</span><span class="n">node</span><span class="w">
+</span><span class="mi">2</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">InContext.Context</span><span class="o">.</span><span class="n">edge_list</span><span class="p" data-group-id="3688276938-6">(</span><span class="n">ctx</span><span class="p" data-group-id="3688276938-6">)</span><span class="w">
+</span><span class="p" data-group-id="3688276938-7">{</span><span class="w"> </span><span class="p" data-group-id="3688276938-8">[</span><span class="p" data-group-id="3688276938-9">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p" data-group-id="3688276938-9">}</span><span class="p" data-group-id="3688276938-8">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3688276938-10">[</span><span class="p" data-group-id="3688276938-11">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p" data-group-id="3688276938-11">}</span><span class="p" data-group-id="3688276938-10">]</span><span class="w"> </span><span class="p" data-group-id="3688276938-7">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">InContext.Graph</span><span class="o">.</span><span class="n">has_node?</span><span class="p" data-group-id="3688276938-12">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="3688276938-12">)</span><span class="w">
+</span><span class="ss">:true</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">InContext.Graph</span><span class="o">.</span><span class="n">has_node?</span><span class="p" data-group-id="3688276938-13">(</span><span class="n">graph2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="3688276938-13">)</span><span class="w">
+</span><span class="ss">:false</span></code></pre>
+  </section>
+</section>
+          </div>
+        </section>
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.3),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  
+  </body>
+</html>
+
