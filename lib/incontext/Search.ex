@@ -10,6 +10,23 @@ defmodule InContext.Search do
   Depth-first search of a graph, returning nodes visited.
 
   ## Examples
+      For the following graph:
+      ```
+                      7
+                 3 ->
+                      8
+           1 ->
+                      9
+                 4 ->
+                      10
+      0 ->
+
+                 5
+
+           2 ->
+
+                 6
+      ```
 
       iex> graph = InContext.Graph.tree_graph(4)
       iex> InContext.Search.dfs(graph, 0, 3)
@@ -31,6 +48,15 @@ defmodule InContext.Search do
   Breadth-first search of a graph, returning nodes visited.
 
   ## Examples
+      For the following graph:
+      ```
+      0 -> [1 -> [3 -> [7,
+                        8],
+                  4 -> [9,
+                        10]],
+            2 -> [5,
+                  6]]
+      ```
 
       iex> graph = InContext.Graph.tree_graph(4)
       iex> InContext.Search.bfs(graph, 0, 3)
