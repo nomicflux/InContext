@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.3">
     <title>InContext.Context — InContext v0.1.0</title>
     <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
-    <script src="dist/sidebar_items-1a89b568df.js"></script>
+    <script src="dist/sidebar_items-06d5cceb81.js"></script>
     <script async src="dist/html-399e30b9b028e3059575.js"></script>
     
   </head>
@@ -80,6 +80,26 @@ InContext.Context
             </a>
             Summary
           </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:edge_triple/0">edge_triple()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:node_id/0">node_id()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:t/0">t()</a>
+  </div>
+</div>
+  </div>
   <div class="summary-functions summary">
     <h2>
       <a href="#functions">Functions</a>
@@ -101,6 +121,75 @@ InContext.Context
   </div>
         </section>
 
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:edge_triple/0">
+    <div class="detail-header">
+    <a href="#t:edge_triple/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">edge_triple()</span>
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Context.ex#L12" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>edge_triple() :: {<a href="#t:node_id/0">node_id</a>(), <a href="#t:node_id/0">node_id</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:node_id/0">
+    <div class="detail-header">
+    <a href="#t:node_id/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">node_id()</span>
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Context.ex#L11" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>node_id() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:t/0">
+    <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this opaque">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this opaque</span>
+    </a>
+    <h1 class="signature">t()</span>
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Context.ex#L14" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(opaque)</span>
+    
+      <div class="specs">
+          <pre><a href="#t:t/0">t</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
         <section id="functions" class="details-list">
           <h1 class="section-heading">
             <a class="hover-link" href="#functions">
@@ -116,14 +205,13 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">edge_list(ctx)</span>
-      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Context.ex#L55" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Context.ex#L63" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
         
       <div class="specs">
-          <pre>edge_list(<a href="InContext.Context.html#t:t/0">InContext.Context.t</a>()) ::
-  {[{<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()}], [{<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()}]}</pre>
+          <pre>edge_list(<a href="InContext.Context.html#t:t/0">InContext.Context.t</a>()) :: {[<a href="#t:edge_triple/0">edge_triple</a>()], [<a href="#t:edge_triple/0">edge_triple</a>()]}</pre>
       </div>
   </div>
   <section class="docstring">
@@ -137,13 +225,13 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">view(graph, node)</span>
-      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Context.ex#L36" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Context.ex#L44" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
         
       <div class="specs">
-          <pre>view(<a href="InContext.Graph.html#t:t/0">InContext.Graph.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>() | nil) ::
+          <pre>view(<a href="InContext.Graph.html#t:t/0">InContext.Graph.t</a>(), <a href="#t:node_id/0">node_id</a>() | nil) ::
   {<a href="InContext.Context.html#t:t/0">InContext.Context.t</a>(), <a href="InContext.Graph.html#t:t/0">InContext.Graph.t</a>()} | nil</pre>
       </div>
   </div>
@@ -156,17 +244,17 @@ Functions          </h1>
 
 <pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="kn">use</span><span class="w"> </span><span class="nc">InContext</span><span class="w">
 </span><span class="gp unselectable">iex&gt; </span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="o">|&gt;</span><span class="w">
-</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="nc">Graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p" data-group-id="2807116272-1">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="2807116272-1">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w">
-</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="nc">Graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p" data-group-id="2807116272-2">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="2807116272-2">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w">
-</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="nc">Graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p" data-group-id="2807116272-3">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="2807116272-3">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="2807116272-4">{</span><span class="n">ctx</span><span class="p">,</span><span class="w"> </span><span class="n">graph2</span><span class="p" data-group-id="2807116272-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Context</span><span class="o">.</span><span class="n">view</span><span class="p" data-group-id="2807116272-5">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="2807116272-5">)</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="nc">Graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p" data-group-id="1684307510-1">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="1684307510-1">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="nc">Graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p" data-group-id="1684307510-2">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="1684307510-2">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="nc">Graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p" data-group-id="1684307510-3">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="1684307510-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="1684307510-4">{</span><span class="n">ctx</span><span class="p">,</span><span class="w"> </span><span class="n">graph2</span><span class="p" data-group-id="1684307510-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Context</span><span class="o">.</span><span class="n">view</span><span class="p" data-group-id="1684307510-5">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="1684307510-5">)</span><span class="w">
 </span><span class="gp unselectable">iex&gt; </span><span class="n">ctx</span><span class="o">.</span><span class="n">node</span><span class="w">
 </span><span class="mi">2</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Context</span><span class="o">.</span><span class="n">edge_list</span><span class="p" data-group-id="2807116272-6">(</span><span class="n">ctx</span><span class="p" data-group-id="2807116272-6">)</span><span class="w">
-</span><span class="p" data-group-id="2807116272-7">{</span><span class="w"> </span><span class="p" data-group-id="2807116272-8">[</span><span class="p" data-group-id="2807116272-9">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p" data-group-id="2807116272-9">}</span><span class="p" data-group-id="2807116272-8">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2807116272-10">[</span><span class="p" data-group-id="2807116272-11">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p" data-group-id="2807116272-11">}</span><span class="p" data-group-id="2807116272-10">]</span><span class="w"> </span><span class="p" data-group-id="2807116272-7">}</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">has_node?</span><span class="p" data-group-id="2807116272-12">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="2807116272-12">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Context</span><span class="o">.</span><span class="n">edge_list</span><span class="p" data-group-id="1684307510-6">(</span><span class="n">ctx</span><span class="p" data-group-id="1684307510-6">)</span><span class="w">
+</span><span class="p" data-group-id="1684307510-7">{</span><span class="w"> </span><span class="p" data-group-id="1684307510-8">[</span><span class="p" data-group-id="1684307510-9">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p" data-group-id="1684307510-9">}</span><span class="p" data-group-id="1684307510-8">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1684307510-10">[</span><span class="p" data-group-id="1684307510-11">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p" data-group-id="1684307510-11">}</span><span class="p" data-group-id="1684307510-10">]</span><span class="w"> </span><span class="p" data-group-id="1684307510-7">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">has_node?</span><span class="p" data-group-id="1684307510-12">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="1684307510-12">)</span><span class="w">
 </span><span class="ss">:true</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">has_node?</span><span class="p" data-group-id="2807116272-13">(</span><span class="n">graph2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="2807116272-13">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">has_node?</span><span class="p" data-group-id="1684307510-13">(</span><span class="n">graph2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="1684307510-13">)</span><span class="w">
 </span><span class="ss">:false</span></code></pre>
   </section>
 </section>

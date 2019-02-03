@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.3">
     <title>InContext.Graph — InContext v0.1.0</title>
     <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
-    <script src="dist/sidebar_items-1a89b568df.js"></script>
+    <script src="dist/sidebar_items-06d5cceb81.js"></script>
     <script async src="dist/html-399e30b9b028e3059575.js"></script>
     
   </head>
@@ -80,6 +80,21 @@ InContext.Graph
             </a>
             Summary
           </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:node_id/0">node_id()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:t/0">t()</a>
+  </div>
+</div>
+  </div>
   <div class="summary-functions summary">
     <h2>
       <a href="#functions">Functions</a>
@@ -136,6 +151,56 @@ InContext.Graph
   </div>
         </section>
 
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:node_id/0">
+    <div class="detail-header">
+    <a href="#t:node_id/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">node_id()</span>
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L11" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>node_id() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:t/0">
+    <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this opaque">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this opaque</span>
+    </a>
+    <h1 class="signature">t()</span>
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L13" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(opaque)</span>
+    
+      <div class="specs">
+          <pre><a href="#t:t/0">t</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
         <section id="functions" class="details-list">
           <h1 class="section-heading">
             <a class="hover-link" href="#functions">
@@ -153,13 +218,14 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">add_edge(graph, from, to, weight \\ 1.0)</span>
-      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L58" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L65" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
         
       <div class="specs">
-          <pre>add_edge(<a href="InContext.Graph.html#t:t/0">InContext.Graph.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()) :: <a href="InContext.Graph.html#t:t/0">InContext.Graph.t</a>()</pre>
+          <pre>add_edge(<a href="InContext.Graph.html#t:t/0">InContext.Graph.t</a>(), <a href="#t:node_id/0">node_id</a>(), <a href="#t:node_id/0">node_id</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()) ::
+  <a href="InContext.Graph.html#t:t/0">InContext.Graph.t</a>()</pre>
       </div>
   </div>
   <section class="docstring">
@@ -170,11 +236,11 @@ Functions          </h1>
 </h2>
 
 <pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="kn">use</span><span class="w"> </span><span class="nc">InContext</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p" data-group-id="3374801499-1">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="3374801499-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">in_edges</span><span class="p" data-group-id="3374801499-2">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="3374801499-2">)</span><span class="w">
-</span><span class="p" data-group-id="3374801499-3">#</span><span class="nc" data-group-id="3374801499-3">MapSet</span><span class="p" data-group-id="3374801499-3">&lt;</span><span class="p" data-group-id="3374801499-4">[</span><span class="p" data-group-id="3374801499-5">%</span><span class="nc" data-group-id="3374801499-5">InContext.Graph.Edge</span><span class="p" data-group-id="3374801499-5">{</span><span class="ss">from</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">weight</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p" data-group-id="3374801499-5">}</span><span class="p" data-group-id="3374801499-4">]</span><span class="p" data-group-id="3374801499-3">&gt;</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">out_edges</span><span class="p" data-group-id="3374801499-6">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="3374801499-6">)</span><span class="w">
-</span><span class="p" data-group-id="3374801499-7">#</span><span class="nc" data-group-id="3374801499-7">MapSet</span><span class="p" data-group-id="3374801499-7">&lt;</span><span class="p" data-group-id="3374801499-8">[</span><span class="p" data-group-id="3374801499-9">%</span><span class="nc" data-group-id="3374801499-9">InContext.Graph.Edge</span><span class="p" data-group-id="3374801499-9">{</span><span class="ss">from</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">weight</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p" data-group-id="3374801499-9">}</span><span class="p" data-group-id="3374801499-8">]</span><span class="p" data-group-id="3374801499-7">&gt;</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p" data-group-id="6892720132-1">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="6892720132-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">in_edges</span><span class="p" data-group-id="6892720132-2">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6892720132-2">)</span><span class="w">
+</span><span class="p" data-group-id="6892720132-3">#</span><span class="nc" data-group-id="6892720132-3">MapSet</span><span class="p" data-group-id="6892720132-3">&lt;</span><span class="p" data-group-id="6892720132-4">[</span><span class="p" data-group-id="6892720132-5">%</span><span class="nc" data-group-id="6892720132-5">InContext.Graph.Edge</span><span class="p" data-group-id="6892720132-5">{</span><span class="ss">from</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">weight</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p" data-group-id="6892720132-5">}</span><span class="p" data-group-id="6892720132-4">]</span><span class="p" data-group-id="6892720132-3">&gt;</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">out_edges</span><span class="p" data-group-id="6892720132-6">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="6892720132-6">)</span><span class="w">
+</span><span class="p" data-group-id="6892720132-7">#</span><span class="nc" data-group-id="6892720132-7">MapSet</span><span class="p" data-group-id="6892720132-7">&lt;</span><span class="p" data-group-id="6892720132-8">[</span><span class="p" data-group-id="6892720132-9">%</span><span class="nc" data-group-id="6892720132-9">InContext.Graph.Edge</span><span class="p" data-group-id="6892720132-9">{</span><span class="ss">from</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">weight</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p" data-group-id="6892720132-9">}</span><span class="p" data-group-id="6892720132-8">]</span><span class="p" data-group-id="6892720132-7">&gt;</span></code></pre>
   </section>
 </section>
 <section class="detail" id="empty?/1">
@@ -184,7 +250,7 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">empty?(graph)</span>
-      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L84" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L91" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -201,11 +267,11 @@ Functions          </h1>
 </h2>
 
 <pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="kn">use</span><span class="w"> </span><span class="nc">InContext</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">empty?</span><span class="p" data-group-id="2725951740-1">(</span><span class="p" data-group-id="2725951740-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">empty?</span><span class="p" data-group-id="5129461506-1">(</span><span class="p" data-group-id="5129461506-1">)</span><span class="w">
 </span><span class="ss">:true</span><span class="w">
 
 </span><span class="gp unselectable">iex&gt; </span><span class="kn">use</span><span class="w"> </span><span class="nc">InContext</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p" data-group-id="2725951740-2">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="2725951740-2">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">empty?</span><span class="p" data-group-id="2725951740-3">(</span><span class="p" data-group-id="2725951740-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p" data-group-id="5129461506-2">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="5129461506-2">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">empty?</span><span class="p" data-group-id="5129461506-3">(</span><span class="p" data-group-id="5129461506-3">)</span><span class="w">
 </span><span class="ss">:false</span></code></pre>
   </section>
 </section>
@@ -216,11 +282,15 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">has_node?(graph, node)</span>
-      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L101" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L109" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-          </div>
+        
+      <div class="specs">
+          <pre>has_node?(<a href="InContext.Graph.html#t:t/0">InContext.Graph.t</a>(), <a href="#t:node_id/0">node_id</a>()) :: Boolean</pre>
+      </div>
+  </div>
   <section class="docstring">
 <p>Return whether a graph has a given node.</p>
   </section>
@@ -232,13 +302,13 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">in_edges(graph, node)</span>
-      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L33" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L40" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
         
       <div class="specs">
-          <pre>in_edges(<a href="InContext.Graph.html#t:t/0">InContext.Graph.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>()) :: <a href="https://hexdocs.pm/elixir/MapSet.html#t:t/0">MapSet.t</a>()</pre>
+          <pre>in_edges(<a href="InContext.Graph.html#t:t/0">InContext.Graph.t</a>(), <a href="#t:node_id/0">node_id</a>()) :: <a href="https://hexdocs.pm/elixir/MapSet.html#t:t/0">MapSet.t</a>()</pre>
       </div>
   </div>
   <section class="docstring">
@@ -252,7 +322,7 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">new()</span>
-      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L25" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L32" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -270,7 +340,7 @@ Functions          </h1>
 
 <pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="kn">use</span><span class="w"> </span><span class="nc">InContext</span><span class="w">
 </span><span class="gp unselectable">iex&gt; </span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">new</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">empty?</span><span class="p" data-group-id="2313176451-1">(</span><span class="n">graph</span><span class="p" data-group-id="2313176451-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">empty?</span><span class="p" data-group-id="5324013285-1">(</span><span class="n">graph</span><span class="p" data-group-id="5324013285-1">)</span><span class="w">
 </span><span class="ss">:true</span></code></pre>
   </section>
 </section>
@@ -281,13 +351,13 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">out_edges(graph, node)</span>
-      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L41" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L48" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
         
       <div class="specs">
-          <pre>out_edges(<a href="InContext.Graph.html#t:t/0">InContext.Graph.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>()) :: <a href="https://hexdocs.pm/elixir/MapSet.html#t:t/0">MapSet.t</a>()</pre>
+          <pre>out_edges(<a href="InContext.Graph.html#t:t/0">InContext.Graph.t</a>(), <a href="#t:node_id/0">node_id</a>()) :: <a href="https://hexdocs.pm/elixir/MapSet.html#t:t/0">MapSet.t</a>()</pre>
       </div>
   </div>
   <section class="docstring">
@@ -301,7 +371,7 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">tree_graph(n)</span>
-      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L90" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L97" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>

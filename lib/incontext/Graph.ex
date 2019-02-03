@@ -8,6 +8,13 @@ defmodule InContext.Graph do
   @todo: Create Node module for labelled nodes
   """
 
+  @type node_id :: term
+
+  @opaque t :: %Graph{
+    in: %{ node_id => MapSet.t(Edge.t) },
+    out: %{ node_id => MapSet.t(Edge.t) }
+  }
+
   defstruct in: %{}, out: %{}
 
   @doc """
@@ -29,7 +36,7 @@ defmodule InContext.Graph do
   @doc """
   Retrieve the edges going in to a node.
   """
-  @spec in_edges(Graph.t(), node) :: MapSet.t()
+  @spec in_edges(Graph.t(), node_id) :: MapSet.t()
   def in_edges(graph, node) do
     Map.get(graph.in, node, MapSet.new())
   end
@@ -37,7 +44,7 @@ defmodule InContext.Graph do
   @doc """
   Retrieve the edges leaving a node.
   """
-  @spec out_edges(Graph.t(), node) :: MapSet.t()
+  @spec out_edges(Graph.t(), node_id) :: MapSet.t()
   def out_edges(graph, node) do
     Map.get(graph.out, node, MapSet.new())
   end
@@ -54,7 +61,7 @@ defmodule InContext.Graph do
       iex> Graph.out_edges(graph, 1)
       #MapSet<[%InContext.Graph.Edge{from: 1, to: 2, weight: 1.0}]>
   """
-  @spec add_edge(Graph.t(), node, node, number) :: Graph.t()
+  @spec add_edge(Graph.t(), node_id, node_id, number) :: Graph.t()
   def add_edge(graph, from, to, weight \\ 1.0) do
     edge = Edge.new(from, to, weight)
     %{graph |
@@ -98,5 +105,6 @@ defmodule InContext.Graph do
   @doc """
   Return whether a graph has a given node.
   """
+  @spec has_node?(Graph.t(), node_id) :: Boolean
   def has_node?(graph, node), do: Map.has_key?(graph.in, node) or Map.has_key?(graph.out, node)
 end

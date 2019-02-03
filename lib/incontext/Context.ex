@@ -8,6 +8,14 @@ defmodule InContext.Context do
 
   @todo (longterm): Write map and reduce functions
   """
+  @type node_id :: term
+  @type edge_triple :: {node_id, node_id, number}
+
+  @opaque t :: %Context{
+    in_edges: MapSet.t(Edge.t()),
+    node: node_id,
+    out_edges: MapSet.t(Edge.t())
+  }
 
   @enforce_keys [:node]
   defstruct in_edges: MapSet.new, node: nil, out_edges: MapSet.new
@@ -32,7 +40,7 @@ defmodule InContext.Context do
       iex> Graph.has_node?(graph2, 2)
       :false
   """
-  @spec view(Graph.t(), node | nil) :: {Context.t(), Graph.t()} | nil
+  @spec view(Graph.t(), node_id | nil) :: {Context.t(), Graph.t()} | nil
   def view(_, nil), do: nil
   def view(graph, node) do
     if Graph.has_node?(graph, node) do
@@ -51,7 +59,7 @@ defmodule InContext.Context do
   @doc """
   Returns implementation-indpendent view of edges in a context.
   """
-  @spec edge_list(Context.t()) :: { [{node, node, number}], [{node, node, number}]}
+  @spec edge_list(Context.t()) :: { [edge_triple], [edge_triple]}
   def edge_list(ctx) do
     { ctx.in_edges |> MapSet.to_list |> Enum.map(&Edge.as_triple/1),
       ctx.out_edges |> MapSet.to_list |> Enum.map(&Edge.as_triple/1) }

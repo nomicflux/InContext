@@ -5,6 +5,14 @@ defmodule InContext.Graph.Edge do
   Weighted, Directed Graph Edges
   """
 
+  @type node_id :: term
+
+  @opaque t :: %Edge{
+    from: node_id,
+    to: node_id,
+    weight: number
+  }
+
   @enforce_keys [:from, :to]
   defstruct from: nil, to: nil, weight: 1.0
 

@@ -8,6 +8,8 @@ defmodule InContext.Search do
   @todo: Break out Combiners into their own module, to allow for different data structures for holding edges (queues for breadth-first search, priority queues for Dijkstra's, etc.)
   """
 
+  @type node_id :: term
+
   @doc """
   Depth-first search of a graph, returning nodes visited.
 
@@ -34,7 +36,7 @@ defmodule InContext.Search do
       iex> Search.dfs(graph, 0, 100)
       []
   """
-  @spec dfs(Graph.t(), node, node) :: list(node)
+  @spec dfs(Graph.t(), node_id, node_id) :: [node_id]
   def dfs(graph, from, to) do
     c = Context.view(graph, from)
     search_ctx(c, [], to, &dfs_combiner/2, [])
@@ -66,7 +68,7 @@ defmodule InContext.Search do
       iex> Search.bfs(graph, 0, 100)
       []
   """
-  @spec bfs(Graph.t(), node, node) :: list(node)
+  @spec bfs(Graph.t(), node_id, node_id) :: [node_id]
   def bfs(graph, from, to) do
     c = Context.view(graph, from)
     search_ctx(c, [], to, &bfs_combiner/2, [])
