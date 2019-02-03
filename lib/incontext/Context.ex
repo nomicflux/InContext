@@ -5,6 +5,8 @@ defmodule InContext.Context do
 
   @moduledoc """
   Contextual Views on Graphs
+
+  @todo (longterm): Write map and reduce functions
   """
 
   @enforce_keys [:node]
@@ -15,18 +17,19 @@ defmodule InContext.Context do
 
   ## Examples
 
-      iex> graph = InContext.Graph.new |>
-      ...>   InContext.Graph.add_edge(1,2) |>
-      ...>   InContext.Graph.add_edge(2,3) |>
-      ...>   InContext.Graph.add_edge(1,3)
-      iex> {ctx, graph2} = InContext.Context.view(graph, 2)
+      iex> use InContext
+      iex> graph = Graph.new |>
+      ...>   Graph.add_edge(1,2) |>
+      ...>   Graph.add_edge(2,3) |>
+      ...>   Graph.add_edge(1,3)
+      iex> {ctx, graph2} = Context.view(graph, 2)
       iex> ctx.node
       2
-      iex> InContext.Context.edge_list(ctx)
+      iex> Context.edge_list(ctx)
       { [{1, 2, 1.0}], [{2, 3, 1.0}] }
-      iex> InContext.Graph.has_node?(graph, 2)
+      iex> Graph.has_node?(graph, 2)
       :true
-      iex> InContext.Graph.has_node?(graph2, 2)
+      iex> Graph.has_node?(graph2, 2)
       :false
   """
   @spec view(Graph.t(), node | nil) :: {Context.t(), Graph.t()} | nil

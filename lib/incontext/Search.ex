@@ -4,6 +4,8 @@ defmodule InContext.Search do
 
   @moduledoc """
   Searching Algorithms using Graph Contexts
+
+  @todo: Break out Combiners into their own module, to allow for different data structures for holding edges (queues for breadth-first search, priority queues for Dijkstra's, etc.)
   """
 
   @doc """
@@ -13,30 +15,23 @@ defmodule InContext.Search do
 
   For the following graph:
   ```
-                  7
-             3 ->
-                  8
-       1 ->
-                  9
-             4 ->
-                  10
-  0 ->
-
-             5
-
-       2 ->
-
-             6
+  0 -> [1 -> [3 -> [7,
+                    8],
+              4 -> [9,
+                    10]],
+        2 -> [5,
+              6]]
   ```
 
-      iex> graph = InContext.Graph.tree_graph(4)
-      iex> InContext.Search.dfs(graph, 0, 3)
+      iex> use InContext
+      iex> graph = Graph.tree_graph(4)
+      iex> Search.dfs(graph, 0, 3)
       [0, 1, 3]
-      iex> InContext.Search.dfs(graph, 0, 2)
+      iex> Search.dfs(graph, 0, 2)
       [0, 1, 3, 7, 8, 4, 9, 10, 2]
-      iex> InContext.Search.dfs(graph, 1, 2)
+      iex> Search.dfs(graph, 1, 2)
       []
-      iex> InContext.Search.dfs(graph, 0, 100)
+      iex> Search.dfs(graph, 0, 100)
       []
   """
   @spec dfs(Graph.t(), node, node) :: list(node)
@@ -60,14 +55,15 @@ defmodule InContext.Search do
               6]]
   ```
 
-      iex> graph = InContext.Graph.tree_graph(4)
-      iex> InContext.Search.bfs(graph, 0, 3)
+      iex> use InContext
+      iex> graph = Graph.tree_graph(4)
+      iex> Search.bfs(graph, 0, 3)
       [0, 1, 2, 3]
-      iex> InContext.Search.bfs(graph, 0, 2)
+      iex> Search.bfs(graph, 0, 2)
       [0, 1, 2]
-      iex> InContext.Search.bfs(graph, 1, 2)
+      iex> Search.bfs(graph, 1, 2)
       []
-      iex> InContext.Search.bfs(graph, 0, 100)
+      iex> Search.bfs(graph, 0, 100)
       []
   """
   @spec bfs(Graph.t(), node, node) :: list(node)
@@ -88,7 +84,9 @@ defmodule InContext.Search do
     Enum.concat(edges, new_edges)
   end
 
-  defp search_ctx({%Context{node: node}, _}, _, node, _, visited), do: Enum.reverse([node | visited])
+  defp search_ctx({%Context{node: node}, _}, _, node, _, visited) do
+    Enum.reverse([node | visited])
+  end
   defp search_ctx({ctx, g}, to_visit, to, combiner, visited) do
     new_edges = combiner.(ctx, to_visit)
     case new_edges do

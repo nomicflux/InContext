@@ -4,6 +4,8 @@ defmodule InContext.Graph do
 
   @moduledoc """
   Functional, Inductive Graph Implementation
+
+  @todo: Create Node module for labelled nodes
   """
 
   defstruct in: %{}, out: %{}
@@ -13,8 +15,9 @@ defmodule InContext.Graph do
 
   ## Examples
 
-      iex> graph = InContext.Graph.new
-      iex> InContext.Graph.empty?(graph)
+      iex> use InContext
+      iex> graph = Graph.new
+      iex> Graph.empty?(graph)
       :true
 
   """
@@ -44,10 +47,11 @@ defmodule InContext.Graph do
 
   ## Examples
 
-      iex> graph = InContext.Graph.new |> InContext.Graph.add_edge(1,2)
-      iex> InContext.Graph.in_edges(graph, 2)
+      iex> use InContext
+      iex> graph = Graph.new |> Graph.add_edge(1,2)
+      iex> Graph.in_edges(graph, 2)
       #MapSet<[%InContext.Graph.Edge{from: 1, to: 2, weight: 1.0}]>
-      iex> InContext.Graph.out_edges(graph, 1)
+      iex> Graph.out_edges(graph, 1)
       #MapSet<[%InContext.Graph.Edge{from: 1, to: 2, weight: 1.0}]>
   """
   @spec add_edge(Graph.t(), node, node, number) :: Graph.t()
@@ -68,17 +72,19 @@ defmodule InContext.Graph do
 
   ## Examples
 
-      iex> InContext.Graph.new |> InContext.Graph.empty?()
+      iex> use InContext
+      iex> Graph.new |> Graph.empty?()
       :true
 
-      iex> InContext.Graph.new |> InContext.Graph.add_edge(1,2) |> InContext.Graph.empty?()
+      iex> use InContext
+      iex> Graph.new |> Graph.add_edge(1,2) |> Graph.empty?()
       :false
   """
   @spec empty?(Graph.t()) :: Boolean
   def empty?(graph), do: graph.in == %{} and graph.out == %{}
 
   @doc """
-  Create a fully-leafed tree with nodes from 0 to `n` * 2 + 2.
+  Create a tree with nodes from 0 to `n` * 2 + 2.
   """
   @spec tree_graph(non_neg_integer) :: %Graph{}
   def tree_graph(n) do
