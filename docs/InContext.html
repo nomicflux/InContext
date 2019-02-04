@@ -105,7 +105,7 @@ Functions          </h1>
       <span class="sr-only">Link to this macro</span>
     </a>
     <h1 class="signature">graph(list)</span>
-      <a href="https://github.com/nomicflux/InContext/blob/master/lib/InContext.ex#L25" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/InContext.ex#L31" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -119,13 +119,17 @@ Functions          </h1>
   Example
 </h2>
 
-<p>To create a graph with edges from 1 to 2, 2 to 3 (with weight 0.5), and 1 to 3 (with weight 0.25):</p>
+<p>To create a graph with edges from 1 to 2, 2 to 3, and 1 to 3:</p>
 <pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="kn">use</span><span class="w"> </span><span class="nc">InContext</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">graph</span><span class="w"> </span><span class="k" data-group-id="1043846912-1">do</span><span class="w">
-</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="mi">2</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="mf">0.5</span><span class="w">
-</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="mf">0.25</span><span class="w">
-</span><span class="gp unselectable">...&gt; </span><span class="k" data-group-id="1043846912-1">end</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">graph</span><span class="w"> </span><span class="k" data-group-id="6136017655-1">do</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">&lt;~</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="k" data-group-id="6136017655-1">end</span></code></pre>
+<p>For a graph with an edge from 1 to 2 and 2 back to 1, and from 4 to 5 and 6 to 5:</p>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="kn">use</span><span class="w"> </span><span class="nc">InContext</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">graph</span><span class="w"> </span><span class="k" data-group-id="4568043968-1">do</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;~&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="mi">4</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">&lt;~</span><span class="w"> </span><span class="mi">6</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="k" data-group-id="4568043968-1">end</span></code></pre>
   </section>
 </section>
           </div>

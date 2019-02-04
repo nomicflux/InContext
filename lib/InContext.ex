@@ -13,17 +13,28 @@ defmodule InContext do
 
   ## Example
 
-  To create a graph with edges from 1 to 2, 2 to 3 (with weight 0.5), and 1 to 3 (with weight 0.25):
+  To create a graph with edges from 1 to 2, 2 to 3, and 1 to 3:
 
       iex> use InContext
       iex> g = graph do
-      ...>   1 -> 2
-      ...>   2 -> 3 :: 0.5
-      ...>   1 -> 3 :: 0.25
+      ...>   1 ~> 2 ~> 3 <~ 1
+      ...> end
+
+  For a graph with an edge from 1 to 2 and 2 back to 1, and from 4 to 5 and 6 to 5:
+
+      iex> use InContext
+      iex> g = graph do
+      ...>   1 <~> 2
+      ...>   4 ~> 5 <~ 6
       ...> end
   """
   defmacro graph(do: graph_block) do
-    edges = Enum.map(graph_block, &make_triple/1)
+    edges = graph_block |>
+      get_lines() |>
+      IO.inspect() |>
+      Enum.map(&make_edges/1) |>
+      Enum.map( fn {l, _} -> l end) |>
+      Enum.concat
     quote do
       unquote(Macro.escape(edges)) |>
         Enum.reduce(InContext.Graph.new,
@@ -33,6 +44,22 @@ defmodule InContext do
     end
   end
 
-  defp make_triple({:->, _, [[from], {:::, _, [to, weight]}]}), do: {from, to, weight}
-  defp make_triple({:->, _, [[from], to]}), do: {from, to, 1.0}
+  defp get_lines({:__block__, _, graph_lines}), do: graph_lines
+  defp get_lines(line), do: [line]
+
+  defp make_edges({:~>, _, [edges, to]}) when is_tuple(edges) do
+    {triples, next} = make_edges(edges)
+    {[{next, to, 1.0} | triples], to}
+  end
+  defp make_edges({:<~, _, [edges, from]}) when is_tuple(edges) do
+    {triples, next} = make_edges(edges)
+    {[{from, next, 1.0} | triples], from}
+  end
+  defp make_edges({:<~>, _, [edges, from]}) when is_tuple(edges) do
+    {triples, next} = make_edges(edges)
+    {[{from, next, 1.0}, {next, from, 1.0} | triples], from}
+  end
+  defp make_edges({:~>, _, [from, to]}), do: {[{from, to, 1.0}], to}
+  defp make_edges({:<~, _, [to, from]}), do: {[{from, to, 1.0}], from}
+  defp make_edges({:<~>, _, [from, to]}), do: {[{to, from, 1.0}, {from, to, 1.0}], to}
 end
