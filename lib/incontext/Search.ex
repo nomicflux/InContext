@@ -1,5 +1,6 @@
 defmodule InContext.Search do
   alias InContext.Graph
+  alias InContext.Graph.Edge
   alias InContext.Context
 
   @moduledoc """
@@ -38,8 +39,7 @@ defmodule InContext.Search do
   """
   @spec dfs(Graph.t(), node_id, node_id) :: [node_id]
   def dfs(graph, from, to) do
-    c = Context.view(graph, from)
-    search_ctx(c, [], to, &dfs_combiner/2, [])
+    search_ctx(graph, [from], to, &dfs_combiner/2)
   end
 
   @doc """
@@ -70,32 +70,35 @@ defmodule InContext.Search do
   """
   @spec bfs(Graph.t(), node_id, node_id) :: [node_id]
   def bfs(graph, from, to) do
-    c = Context.view(graph, from)
-    search_ctx(c, [], to, &bfs_combiner/2, [])
+    search_ctx(graph, [from], to, &bfs_combiner/2)
   end
 
-  defp dfs_combiner(ctx, edges) do
+  defp dfs_combiner(ctx, nodes) do
     ctx.out_edges |>
       MapSet.to_list() |>
-      Enum.concat(edges)
+      Enum.map(&Edge.to/1) |>
+      Enum.concat(nodes)
   end
 
-  defp bfs_combiner(ctx, edges) do
-    new_edges = ctx.out_edges |>
-      MapSet.to_list()
-    Enum.concat(edges, new_edges)
+  defp bfs_combiner(ctx, nodes) do
+    new_nodes = ctx.out_edges |>
+      MapSet.to_list() |>
+      Enum.map(&Edge.to/1)
+    Enum.concat(nodes, new_nodes)
   end
 
-  defp search_ctx({%Context{node: node}, _}, _, node, _, visited) do
-    Enum.reverse([node | visited])
+  defp search_ctx(graph, to_visit, to, combiner, visited \\ [])
+  defp search_ctx(_graph, [], _to, _combiner, _visited), do: []
+  defp search_ctx(_graph, [at | _rest], at, _combiner, visited) do
+    Enum.reverse([at | visited])
   end
-  defp search_ctx({ctx, g}, to_visit, to, combiner, visited) do
-    new_edges = combiner.(ctx, to_visit)
-    case new_edges do
-      [ next | rest ] ->
-        search_ctx(Context.view(g, next.to), rest, to, combiner, [ctx.node | visited])
-      [] ->
-        []
+  defp search_ctx(graph, [from | rest], to, combiner, visited) do
+    case Context.view(graph, from) do
+      {nil, _} ->
+        search_ctx(graph, rest, to, combiner, visited)
+      {ctx, new_graph} ->
+        new_nodes = combiner.(ctx, rest)
+        search_ctx(new_graph, new_nodes, to, combiner, [ctx.node | visited])
     end
   end
 end

@@ -40,8 +40,8 @@ defmodule InContext.Context do
       iex> Graph.has_node?(graph2, 2)
       :false
   """
-  @spec view(Graph.t(), node_id | nil) :: {Context.t(), Graph.t()} | nil
-  def view(_, nil), do: nil
+  @spec view(Graph.t(), node_id | nil) :: {Context.t() | nil, Graph.t()}
+  def view(graph, nil), do: { nil, graph }
   def view(graph, node) do
     if Graph.has_node?(graph, node) do
       {ins, ins_next} = partition_map(graph.in, node)
@@ -52,7 +52,7 @@ defmodule InContext.Context do
        %Graph{in: ins_next,
               out: outs_next}}
     else
-      nil
+      { nil, graph }
     end
   end
 
