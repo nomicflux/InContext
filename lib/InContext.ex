@@ -31,7 +31,6 @@ defmodule InContext do
   defmacro graph(do: graph_block) do
     edges = graph_block |>
       get_lines() |>
-      IO.inspect() |>
       Enum.map(&make_edges/1) |>
       Enum.map( fn {l, _} -> l end) |>
       Enum.concat
