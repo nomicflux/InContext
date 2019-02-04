@@ -12,7 +12,8 @@ defmodule InContext.Search do
   @type node_id :: term
 
   @doc """
-  Depth-first search of a graph, returning nodes visited.
+  Depth-first search of a graph, returning pairs of nodes visited with
+  the node used to reach them.
 
   ## Examples
 
@@ -29,9 +30,9 @@ defmodule InContext.Search do
       iex> use InContext
       iex> graph = Graph.tree_graph(4)
       iex> Search.dfs(graph, 0, 3)
-      [0, 1, 3]
+      [{nil, 0}, {0, 1}, {1, 3}]
       iex> Search.dfs(graph, 0, 2)
-      [0, 1, 3, 7, 8, 4, 9, 10, 2]
+      [{nil, 0}, {0, 1}, {1, 3}, {3, 7}, {3, 8}, {1, 4}, {4, 9}, {4, 10}, {0, 2}]
       iex> Search.dfs(graph, 1, 2)
       []
       iex> Search.dfs(graph, 0, 100)
@@ -60,9 +61,9 @@ defmodule InContext.Search do
       iex> use InContext
       iex> graph = Graph.tree_graph(4)
       iex> Search.bfs(graph, 0, 3)
-      [0, 1, 2, 3]
+      [{nil, 0}, {0, 1}, {0, 2}, {1, 3}]
       iex> Search.bfs(graph, 0, 2)
-      [0, 1, 2]
+      [{nil, 0}, {0, 1}, {0, 2}]
       iex> Search.bfs(graph, 1, 2)
       []
       iex> Search.bfs(graph, 0, 100)
@@ -76,29 +77,41 @@ defmodule InContext.Search do
   defp dfs_combiner(ctx, nodes) do
     ctx.out_edges |>
       MapSet.to_list() |>
-      Enum.map(&Edge.to/1) |>
+      Enum.map(fn edge -> {Edge.from(edge), Edge.to(edge)} end) |>
       Enum.concat(nodes)
   end
 
   defp bfs_combiner(ctx, nodes) do
     new_nodes = ctx.out_edges |>
       MapSet.to_list() |>
-      Enum.map(&Edge.to/1)
+      Enum.map(fn edge -> {Edge.from(edge), Edge.to(edge)} end)
     Enum.concat(nodes, new_nodes)
   end
 
-  defp search_ctx(graph, to_visit, to, combiner, visited \\ [])
-  defp search_ctx(_graph, [], _to, _combiner, _visited), do: []
-  defp search_ctx(_graph, [at | _rest], at, _combiner, visited) do
-    Enum.reverse([at | visited])
+  # Defaults to make initial calls more ergonomic
+  # Default tail-recursive `visited`, and no need to specificy `nil` as
+  # from node for starting positions
+
+  # Case when `start` is a list of nodes
+  defp search_ctx(graph, [start], to, combiner) when is_list(start) do
+    search_ctx(graph, Enum.map(start, fn x -> {nil, x} end), to, combiner, [])
   end
-  defp search_ctx(graph, [from | rest], to, combiner, visited) do
+  # Case when `start` is a single node
+  defp search_ctx(graph, [start], to, combiner) when not is_tuple(start) do
+    search_ctx(graph, [{nil, start}], to, combiner, [])
+  end
+
+  defp search_ctx(_graph, [], _to, _combiner, _visited), do: []
+  defp search_ctx(_graph, [{_last, at}=pair | _rest], at, _combiner, visited) do
+    Enum.reverse([pair | visited])
+  end
+  defp search_ctx(graph, [{_last, from}=pair | rest], to, combiner, visited) do
     case Context.view(graph, from) do
       {nil, _} ->
         search_ctx(graph, rest, to, combiner, visited)
       {ctx, new_graph} ->
         new_nodes = combiner.(ctx, rest)
-        search_ctx(new_graph, new_nodes, to, combiner, [ctx.node | visited])
+        search_ctx(new_graph, new_nodes, to, combiner, [pair | visited])
     end
   end
 end
