@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.3">
     <title>InContext — InContext v0.1.0</title>
     <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
-    <script src="dist/sidebar_items-06d5cceb81.js"></script>
+    <script src="dist/sidebar_items-9ef22b469d.js"></script>
     <script async src="dist/html-399e30b9b028e3059575.js"></script>
     
   </head>
@@ -68,7 +68,68 @@ InContext
 
 
 
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#graph/1">graph(list)</a>
+  </div>
+    <div class="summary-synopsis"><p>Graph construction macro</p>
+</div>
+</div>
+  </div>
+        </section>
 
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="graph/1">
+    <div class="detail-header">
+    <a href="#graph/1" class="detail-link" title="Link to this macro">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature">graph(list)</span>
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/InContext.ex#L25" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(macro)</span>
+      </div>
+  <section class="docstring">
+<p>Graph construction macro.</p>
+<h2 id="graph/1-example" class="section-heading">
+  <a href="#graph/1-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example
+</h2>
+
+<p>To create a graph with edges from 1 to 2, 2 to 3 (with weight 0.5), and 1 to 3 (with weight 0.25):</p>
+<p>  iex&gt; use InContext
+  iex&gt; g = graph do
+  ...&gt;   1 -&gt; 2
+  ...&gt;   2 -&gt; 3 :: 0.5
+  ...&gt;   1 -&gt; 3 :: 0.25
+  ...&gt; end</p>
+  </section>
+</section>
+          </div>
+        </section>
           <footer class="footer">
         <p>
           <span class="line">
