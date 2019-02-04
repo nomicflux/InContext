@@ -15,12 +15,12 @@ defmodule InContext do
 
   To create a graph with edges from 1 to 2, 2 to 3 (with weight 0.5), and 1 to 3 (with weight 0.25):
 
-    iex> use InContext
-    iex> g = graph do
-    ...>   1 -> 2
-    ...>   2 -> 3 :: 0.5
-    ...>   1 -> 3 :: 0.25
-    ...> end
+      iex> use InContext
+      iex> g = graph do
+      ...>   1 -> 2
+      ...>   2 -> 3 :: 0.5
+      ...>   1 -> 3 :: 0.25
+      ...> end
   """
   defmacro graph(do: graph_block) do
     edges = Enum.map(graph_block, &make_triple/1)
