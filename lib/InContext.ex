@@ -3,8 +3,11 @@ defmodule InContext do
     quote do
       import unquote(__MODULE__)
       alias InContext.Graph, as: Graph
+      alias InContext.Graph.Edge, as: Edge
       alias InContext.Context, as: Context
       alias InContext.Search, as: Search
+
+      import Graph, only: [{:~>, 2}, {:<~, 2}, {:<~>, 2}]
     end
   end
 
@@ -15,17 +18,17 @@ defmodule InContext do
 
   To create a graph with edges from 1 to 2, 2 to 3, and 1 to 3:
 
-      iex> use InContext
-      iex> g = graph do
-      ...>   1 ~> 2 ~> 3 <~ 1
-      ...> end
+  iex> use InContext
+  iex> g = graph do
+  ...>   1 ~> 2 ~> 3 <~ 1
+  ...> end
 
   For a graph with an edge from 1 to 2 and 2 back to 1, and from 4 to 5 and 6 to 5:
 
-      iex> use InContext
-      iex> g = graph do
-      ...>   1 <~> 2
-      ...>   4 ~> 5 <~ 6
+  iex> use InContext
+  iex> g = graph do
+  ...>   1 <~> 2
+  ...>   4 ~> 5 <~ 6
       ...> end
   """
   defmacro graph(do: graph_block) do

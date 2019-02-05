@@ -107,4 +107,16 @@ defmodule InContext.Graph do
   """
   @spec has_node?(Graph.t(), node_id) :: Boolean
   def has_node?(graph, node), do: Map.has_key?(graph.in, node) or Map.has_key?(graph.out, node)
+
+  def (%Graph{}=g) ~> node, do: {g, node}
+  def {g, node1} ~> node2, do: {g |> add_edge(node1, node2), node2}
+  def node1 ~> node2, do: {new() |> add_edge(node1, node2), node2}
+
+  def (%Graph{}=g) <~ node, do: {g, node}
+  def {g, node1} <~ node2, do: {g |> add_edge(node2, node1), node2}
+  def node1 <~ node2, do: {new() |> add_edge(node2, node1), node2}
+
+  def (%Graph{}=g) <~> node, do: {g, node}
+  def {g, node1} <~> node2, do: {g |> add_edge(node1, node2) |> add_edge(node2, node1), node2}
+  def node1 <~> node2, do: {new() |> add_edge(node1, node2) |> add_edge(node2, node1), node2}
 end
