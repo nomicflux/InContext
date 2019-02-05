@@ -56,10 +56,10 @@ defmodule InContext.Graph do
 
       iex> use InContext
       iex> graph = Graph.new |> Graph.add_edge(1,2)
-      iex> Graph.in_edges(graph, 2)
-      #MapSet<[%InContext.Graph.Edge{from: 1, to: 2, weight: 1.0}]>
-      iex> Graph.out_edges(graph, 1)
-      #MapSet<[%InContext.Graph.Edge{from: 1, to: 2, weight: 1.0}]>
+      iex> Graph.in_edges(graph, 2) |> MapSet.to_list |> Enum.map(&Edge.from/1)
+      [1]
+      iex> Graph.out_edges(graph, 1) |> MapSet.to_list |> Enum.map(&Edge.to/1)
+      [2]
   """
   @spec add_edge(Graph.t(), node_id, node_id, number) :: Graph.t()
   def add_edge(graph, from, to, weight \\ 1.0) do
@@ -108,15 +108,73 @@ defmodule InContext.Graph do
   @spec has_node?(Graph.t(), node_id) :: Boolean
   def has_node?(graph, node), do: Map.has_key?(graph.in, node) or Map.has_key?(graph.out, node)
 
-  def (%Graph{}=g) ~> node, do: {g, node}
+  @doc """
+  Use an existing graph as a basis for new edges.
+
+  ## Example
+
+      iex> use InContext
+      iex> {graph1, _} = 1 ~> 2
+      iex> {graph2, _} = graph1 ~>> 3 ~> 4 ~> 2
+      iex> Graph.in_edges(graph2, 2) |> MapSet.to_list |> Enum.map(&Edge.from/1)
+      [1, 4]
+  """
+  def (%Graph{}=g) ~>> node, do: {g, node}
+
+  @doc """
+  Create a graph by stringing together nodes going from left to right.
+
+  Returns tuple of graph and last node added, to thread nodes together into a graph.
+
+  ## Example
+
+      iex> use InContext
+      iex> {graph, _} = 1 ~> 2 ~> 3
+      iex> Graph.in_edges(graph, 2) |> MapSet.to_list |> Enum.map(&Edge.from/1)
+      [1]
+      iex> Graph.out_edges(graph, 2) |> MapSet.to_list |> Enum.map(&Edge.to/1)
+      [3]
+  """
+  def {g, node1} ~> {node2, weight}, do: {g |> add_edge(node1, node2, weight), node2}
   def {g, node1} ~> node2, do: {g |> add_edge(node1, node2), node2}
+  def node1 ~> {node2, weight}, do: {new() |> add_edge(node1, node2, weight), node2}
   def node1 ~> node2, do: {new() |> add_edge(node1, node2), node2}
 
-  def (%Graph{}=g) <~ node, do: {g, node}
+  @doc """
+  Create a graph by stringing together nodes going from right to left.
+
+  Returns tuple of graph and last node added, to thread nodes together into a graph.
+
+  ## Example
+
+  iex> use InContext
+  iex> {graph, _} = 1 <~ 2 <~ 3
+  iex> Graph.in_edges(graph, 2) |> MapSet.to_list |> Enum.map(&Edge.from/1)
+  [3]
+  iex> Graph.out_edges(graph, 2) |> MapSet.to_list |> Enum.map(&Edge.to/1)
+  [1]
+  """
+  def {g, node1} <~ {node2, weight}, do: {g |> add_edge(node2, node1, weight), node2}
   def {g, node1} <~ node2, do: {g |> add_edge(node2, node1), node2}
+  def node1 <~ {node2, weight}, do: {new() |> add_edge(node2, node1, weight), node2}
   def node1 <~ node2, do: {new() |> add_edge(node2, node1), node2}
 
-  def (%Graph{}=g) <~> node, do: {g, node}
+  @doc """
+  Create a graph by stringing together nodes going from right to left and back.
+
+  Returns tuple of graph and last node added, to thread nodes together into a graph.
+
+  ## Example
+
+  iex> use InContext
+  iex> {graph, _} = 1 <~> 2 <~> 3
+  iex> Graph.in_edges(graph, 2) |> MapSet.to_list |> Enum.map(&Edge.from/1)
+  [1, 3]
+  iex> Graph.out_edges(graph, 2) |> MapSet.to_list |> Enum.map(&Edge.to/1)
+  [1, 3]
+  """
+  def {g, node1} <~> {node2, weight}, do: {g |> add_edge(node1, node2, weight) |> add_edge(node2, node1, weight), node2}
   def {g, node1} <~> node2, do: {g |> add_edge(node1, node2) |> add_edge(node2, node1), node2}
+  def node1 <~> {node2, weight}, do: {new() |> add_edge(node1, node2, weight) |> add_edge(node2, node1, weight), node2}
   def node1 <~> node2, do: {new() |> add_edge(node1, node2) |> add_edge(node2, node1), node2}
 end

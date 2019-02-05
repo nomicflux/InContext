@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.3">
     <title>InContext.Graph — InContext v0.1.0</title>
     <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
-    <script src="dist/sidebar_items-9ef22b469d.js"></script>
+    <script src="dist/sidebar_items-23840d007a.js"></script>
     <script async src="dist/html-399e30b9b028e3059575.js"></script>
     
   </head>
@@ -101,6 +101,20 @@ InContext.Graph
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#%3C~/2">node1 &lt;~ node2</a>
+  </div>
+    <div class="summary-synopsis"><p>Create a graph by stringing together nodes going from right to left</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#%3C~%3E/2">node1 &lt;~&gt; node2</a>
+  </div>
+    <div class="summary-synopsis"><p>Create a graph by stringing together nodes going from right to left and back</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#add_edge/4">add_edge(graph, from, to, weight \\ 1.0)</a>
   </div>
     <div class="summary-synopsis"><p>Add an edge to a graph</p>
@@ -146,6 +160,20 @@ InContext.Graph
     <a href="#tree_graph/1">tree_graph(n)</a>
   </div>
     <div class="summary-synopsis"><p>Create a tree with nodes from 0 to <code class="inline">n</code> * 2 + 2</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#~%3E/2">node1 ~&gt; node2</a>
+  </div>
+    <div class="summary-synopsis"><p>Create a graph by stringing together nodes going from left to right</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#~%3E%3E/2">g ~&gt;&gt; node</a>
+  </div>
+    <div class="summary-synopsis"><p>Use an existing graph as a basis for new edges</p>
 </div>
 </div>
   </div>
@@ -209,6 +237,64 @@ Types          </h1>
             </a>
 Functions          </h1>
           <div class="functions-list">
+<section class="detail" id="%3C~/2">
+    <span id="&lt;~/2"></span>
+    <div class="detail-header">
+    <a href="#%3C~/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">node1 &lt;~ node2</span>
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L157" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Create a graph by stringing together nodes going from right to left.</p>
+<p>Returns tuple of graph and last node added, to thread nodes together into a graph.</p>
+<h2 id="%3C~/2-example" class="section-heading">
+  <a href="#%3C~/2-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example
+</h2>
+
+<p>iex&gt; use InContext
+iex&gt; {graph, _} = 1 &lt;~ 2 &lt;~ 3
+iex&gt; Graph.in_edges(graph, 2) |&gt; MapSet.to_list |&gt; Enum.map(&amp;Edge.from/1)
+[3]
+iex&gt; Graph.out_edges(graph, 2) |&gt; MapSet.to_list |&gt; Enum.map(&amp;Edge.to/1)
+[1]</p>
+  </section>
+</section>
+<section class="detail" id="%3C~%3E/2">
+    <span id="&lt;~&gt;/2"></span>
+    <div class="detail-header">
+    <a href="#%3C~%3E/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">node1 &lt;~&gt; node2</span>
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L176" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Create a graph by stringing together nodes going from right to left and back.</p>
+<p>Returns tuple of graph and last node added, to thread nodes together into a graph.</p>
+<h2 id="%3C~%3E/2-example" class="section-heading">
+  <a href="#%3C~%3E/2-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example
+</h2>
+
+<p>iex&gt; use InContext
+iex&gt; {graph, _} = 1 &lt;~&gt; 2 &lt;~&gt; 3
+iex&gt; Graph.in_edges(graph, 2) |&gt; MapSet.to_list |&gt; Enum.map(&amp;Edge.from/1)
+[1, 3]
+iex&gt; Graph.out_edges(graph, 2) |&gt; MapSet.to_list |&gt; Enum.map(&amp;Edge.to/1)
+[1, 3]</p>
+  </section>
+</section>
 <section class="detail" id="add_edge/4">
   
     <span id="add_edge/3"></span>
@@ -236,11 +322,11 @@ Functions          </h1>
 </h2>
 
 <pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="kn">use</span><span class="w"> </span><span class="nc">InContext</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p" data-group-id="0707043073-1">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="0707043073-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">in_edges</span><span class="p" data-group-id="0707043073-2">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="0707043073-2">)</span><span class="w">
-</span><span class="p" data-group-id="0707043073-3">#</span><span class="nc" data-group-id="0707043073-3">MapSet</span><span class="p" data-group-id="0707043073-3">&lt;</span><span class="p" data-group-id="0707043073-4">[</span><span class="p" data-group-id="0707043073-5">%</span><span class="nc" data-group-id="0707043073-5">InContext.Graph.Edge</span><span class="p" data-group-id="0707043073-5">{</span><span class="ss">from</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">weight</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p" data-group-id="0707043073-5">}</span><span class="p" data-group-id="0707043073-4">]</span><span class="p" data-group-id="0707043073-3">&gt;</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">out_edges</span><span class="p" data-group-id="0707043073-6">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="0707043073-6">)</span><span class="w">
-</span><span class="p" data-group-id="0707043073-7">#</span><span class="nc" data-group-id="0707043073-7">MapSet</span><span class="p" data-group-id="0707043073-7">&lt;</span><span class="p" data-group-id="0707043073-8">[</span><span class="p" data-group-id="0707043073-9">%</span><span class="nc" data-group-id="0707043073-9">InContext.Graph.Edge</span><span class="p" data-group-id="0707043073-9">{</span><span class="ss">from</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">to</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">weight</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p" data-group-id="0707043073-9">}</span><span class="p" data-group-id="0707043073-8">]</span><span class="p" data-group-id="0707043073-7">&gt;</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p" data-group-id="0498799253-1">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="0498799253-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">in_edges</span><span class="p" data-group-id="0498799253-2">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="0498799253-2">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MapSet</span><span class="o">.</span><span class="n">to_list</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">map</span><span class="p" data-group-id="0498799253-3">(</span><span class="o">&amp;</span><span class="nc">Edge</span><span class="o">.</span><span class="n">from</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="0498799253-3">)</span><span class="w">
+</span><span class="p" data-group-id="0498799253-4">[</span><span class="mi">1</span><span class="p" data-group-id="0498799253-4">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">out_edges</span><span class="p" data-group-id="0498799253-5">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="0498799253-5">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MapSet</span><span class="o">.</span><span class="n">to_list</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">map</span><span class="p" data-group-id="0498799253-6">(</span><span class="o">&amp;</span><span class="nc">Edge</span><span class="o">.</span><span class="n">to</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="0498799253-6">)</span><span class="w">
+</span><span class="p" data-group-id="0498799253-7">[</span><span class="mi">2</span><span class="p" data-group-id="0498799253-7">]</span></code></pre>
   </section>
 </section>
 <section class="detail" id="empty?/1">
@@ -267,11 +353,11 @@ Functions          </h1>
 </h2>
 
 <pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="kn">use</span><span class="w"> </span><span class="nc">InContext</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">empty?</span><span class="p" data-group-id="8044953891-1">(</span><span class="p" data-group-id="8044953891-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">empty?</span><span class="p" data-group-id="8730956458-1">(</span><span class="p" data-group-id="8730956458-1">)</span><span class="w">
 </span><span class="ss">:true</span><span class="w">
 
 </span><span class="gp unselectable">iex&gt; </span><span class="kn">use</span><span class="w"> </span><span class="nc">InContext</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p" data-group-id="8044953891-2">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="8044953891-2">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">empty?</span><span class="p" data-group-id="8044953891-3">(</span><span class="p" data-group-id="8044953891-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p" data-group-id="8730956458-2">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="8730956458-2">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">empty?</span><span class="p" data-group-id="8730956458-3">(</span><span class="p" data-group-id="8730956458-3">)</span><span class="w">
 </span><span class="ss">:false</span></code></pre>
   </section>
 </section>
@@ -340,7 +426,7 @@ Functions          </h1>
 
 <pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="kn">use</span><span class="w"> </span><span class="nc">InContext</span><span class="w">
 </span><span class="gp unselectable">iex&gt; </span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Graph</span><span class="o">.</span><span class="n">new</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">empty?</span><span class="p" data-group-id="0111544328-1">(</span><span class="n">graph</span><span class="p" data-group-id="0111544328-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">empty?</span><span class="p" data-group-id="6662341995-1">(</span><span class="n">graph</span><span class="p" data-group-id="6662341995-1">)</span><span class="w">
 </span><span class="ss">:true</span></code></pre>
   </section>
 </section>
@@ -382,6 +468,62 @@ Functions          </h1>
   </div>
   <section class="docstring">
 <p>Create a tree with nodes from 0 to <code class="inline">n</code> * 2 + 2.</p>
+  </section>
+</section>
+<section class="detail" id="~%3E/2">
+    <span id="~&gt;/2"></span>
+    <div class="detail-header">
+    <a href="#~%3E/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">node1 ~&gt; node2</span>
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L138" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Create a graph by stringing together nodes going from left to right.</p>
+<p>Returns tuple of graph and last node added, to thread nodes together into a graph.</p>
+<h2 id="~%3E/2-example" class="section-heading">
+  <a href="#~%3E/2-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="kn">use</span><span class="w"> </span><span class="nc">InContext</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="2423787436-1">{</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="2423787436-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">in_edges</span><span class="p" data-group-id="2423787436-2">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="2423787436-2">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MapSet</span><span class="o">.</span><span class="n">to_list</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">map</span><span class="p" data-group-id="2423787436-3">(</span><span class="o">&amp;</span><span class="nc">Edge</span><span class="o">.</span><span class="n">from</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="2423787436-3">)</span><span class="w">
+</span><span class="p" data-group-id="2423787436-4">[</span><span class="mi">1</span><span class="p" data-group-id="2423787436-4">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">out_edges</span><span class="p" data-group-id="2423787436-5">(</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="2423787436-5">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MapSet</span><span class="o">.</span><span class="n">to_list</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">map</span><span class="p" data-group-id="2423787436-6">(</span><span class="o">&amp;</span><span class="nc">Edge</span><span class="o">.</span><span class="n">to</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="2423787436-6">)</span><span class="w">
+</span><span class="p" data-group-id="2423787436-7">[</span><span class="mi">3</span><span class="p" data-group-id="2423787436-7">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="~%3E%3E/2">
+    <span id="~&gt;&gt;/2"></span>
+    <div class="detail-header">
+    <a href="#~%3E%3E/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">g ~&gt;&gt; node</span>
+      <a href="https://github.com/nomicflux/InContext/blob/master/lib/incontext/Graph.ex#L122" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Use an existing graph as a basis for new edges.</p>
+<h2 id="~%3E%3E/2-example" class="section-heading">
+  <a href="#~%3E%3E/2-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="kn">use</span><span class="w"> </span><span class="nc">InContext</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="6002048155-1">{</span><span class="n">graph1</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="6002048155-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="6002048155-2">{</span><span class="n">graph2</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="6002048155-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">graph1</span><span class="w"> </span><span class="o">~&gt;&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Graph</span><span class="o">.</span><span class="n">in_edges</span><span class="p" data-group-id="6002048155-3">(</span><span class="n">graph2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6002048155-3">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MapSet</span><span class="o">.</span><span class="n">to_list</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">map</span><span class="p" data-group-id="6002048155-4">(</span><span class="o">&amp;</span><span class="nc">Edge</span><span class="o">.</span><span class="n">from</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="6002048155-4">)</span><span class="w">
+</span><span class="p" data-group-id="6002048155-5">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="6002048155-5">]</span></code></pre>
   </section>
 </section>
           </div>
