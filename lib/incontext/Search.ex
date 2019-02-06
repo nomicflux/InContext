@@ -101,17 +101,17 @@ defmodule InContext.Search do
     search_ctx(graph, [{nil, start}], to, combiner, [])
   end
 
-  defp search_ctx(_graph, [], _to, _combiner, _visited), do: []
-  defp search_ctx(_graph, [{_last, at}=pair | _rest], at, _combiner, visited) do
-    Enum.reverse([pair | visited])
+  defp search_ctx(_graph, [], _to, _combiner, _path), do: []
+  defp search_ctx(_graph, [{_last, at}=pair | _rest], at, _combiner, path) do
+    Enum.reverse([pair | path])
   end
-  defp search_ctx(graph, [{_last, from}=pair | rest], to, combiner, visited) do
+  defp search_ctx(graph, [{_last, from}=pair | rest], to, combiner, path) do
     case Context.view(graph, from) do
       {nil, _} ->
-        search_ctx(graph, rest, to, combiner, visited)
+        search_ctx(graph, rest, to, combiner, path)
       {ctx, new_graph} ->
         new_nodes = combiner.(ctx, rest)
-        search_ctx(new_graph, new_nodes, to, combiner, [pair | visited])
+        search_ctx(new_graph, new_nodes, to, combiner, [pair | path])
     end
   end
 end
