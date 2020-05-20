@@ -4,8 +4,6 @@ defmodule InContext.Graph do
 
   @moduledoc """
   Functional, Inductive Graph Implementation
-
-  @todo: Create Node module for labelled nodes
   """
 
   @type node_id :: term
@@ -147,12 +145,12 @@ defmodule InContext.Graph do
 
   ## Example
 
-  iex> use InContext
-  iex> {graph, _} = 1 <~ 2 <~ 3
-  iex> Graph.in_edges(graph, 2) |> MapSet.to_list |> Enum.map(&Edge.from/1)
-  [3]
-  iex> Graph.out_edges(graph, 2) |> MapSet.to_list |> Enum.map(&Edge.to/1)
-  [1]
+      iex> use InContext
+      iex> {graph, _} = 1 <~ 2 <~ 3
+      iex> Graph.in_edges(graph, 2) |> MapSet.to_list |> Enum.map(&Edge.from/1)
+      [3]
+      iex> Graph.out_edges(graph, 2) |> MapSet.to_list |> Enum.map(&Edge.to/1)
+      [1]
   """
   def {g, node1} <~ {node2, weight}, do: {g |> add_edge(node2, node1, weight), node2}
   def {g, node1} <~ node2, do: {g |> add_edge(node2, node1), node2}
@@ -166,12 +164,12 @@ defmodule InContext.Graph do
 
   ## Example
 
-  iex> use InContext
-  iex> {graph, _} = 1 <~> 2 <~> 3
-  iex> Graph.in_edges(graph, 2) |> MapSet.to_list |> Enum.map(&Edge.from/1)
-  [1, 3]
-  iex> Graph.out_edges(graph, 2) |> MapSet.to_list |> Enum.map(&Edge.to/1)
-  [1, 3]
+      iex> use InContext
+      iex> {graph, _} = 1 <~> 2 <~> 3
+      iex> Graph.in_edges(graph, 2) |> MapSet.to_list |> Enum.map(&Edge.from/1)
+      [1, 3]
+      iex> Graph.out_edges(graph, 2) |> MapSet.to_list |> Enum.map(&Edge.to/1)
+      [1, 3]
   """
   def {g, node1} <~> {node2, weight}, do: {g |> add_edge(node1, node2, weight) |> add_edge(node2, node1, weight), node2}
   def {g, node1} <~> node2, do: {g |> add_edge(node1, node2) |> add_edge(node2, node1), node2}

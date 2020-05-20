@@ -5,8 +5,6 @@ defmodule InContext.Context do
 
   @moduledoc """
   Contextual Views on Graphs
-
-  @todo (longterm): Write map and reduce functions
   """
   @type node_id :: term
   @type edge_triple :: {node_id, node_id, number}

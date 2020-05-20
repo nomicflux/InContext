@@ -5,8 +5,6 @@ defmodule InContext.Search do
 
   @moduledoc """
   Searching Algorithms using Graph Contexts
-
-  @todo: Break out Combiners into their own module, to allow for different data structures for holding edges (queues for breadth-first search, priority queues for Dijkstra's, etc.)
   """
 
   @type node_id :: term
